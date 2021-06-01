@@ -8,16 +8,17 @@ namespace Prototype.Models
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
-        public string Address { get; set; }
+        public string Address { get; set; } // Could possible encapsulate this in an Address Object
         public string City { get; set; }
         public string State { get; set; }
         public int Zip { get; set; }
         public DateTime StartDate { get; set; }
         public int BillingPeriodId { get; set; }
-        public BillingPeriod BillingPeriod { get; set; }
-        public bool Active { get; set; }
-        public bool IsPaidCurrent { get; set; }
+        public BillingPeriod BillingPeriod { get; set; } // Dropdown static list
+        public bool isActive { get; set; }
         public int NumberOfUnits { get; set; }
+        public int OtherWarrantyId { get; set; }
+        public OtherWarranty OtherWarranty { get; set; } // Dropdown static list
 
         // Add this in later version
         //public List<Unit> Units { get; set; }

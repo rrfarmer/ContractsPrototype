@@ -1,0 +1,16 @@
+Steps from Les Jackson on .Net Core MVC REST API Build
+
+Get some scaffold code with:
+dotnet new webapi -n ProjectName (do this inside the folder you want the project in)
+
+Open Project in VS Code:
+code -r ProjectName
+
+Startup.cs is where a lot of config goes
+
+Create a Models folder, this is where all data Models go
+
+Build your starting Models
+
+Make a Data folder, this is for your "IProjectNameRepo" interface files go
+-Examples like "IEnermerable<ObjectName> GetAllObjects();" and "ObjectName GetObjectById(int id);"
