@@ -39,7 +39,18 @@ Move on to Entity Framework Stuff!!!
 -in terminal install packages
 -From Nuget.org
 -use the .Net CLI tab
+
+Packages:
 "https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/6.0.0-preview.4.21253.1"
+"https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design/6.0.0-preview.4.21253.1"
+"dotnet add package Microsoft.EntityFrameworkCore.SqlServer" - or find package for the right database you're using
+
+Check if you have EF tools installed by using "dotnet ef"
+If not, intall them with "dotnet tool install --global dotnet-ef"
 
 -Mosh "Explicit Loading" video answers questions about multiple levels of objects and arrays
 
+Create DbContext class
+-inside the Data folder, "NameContext.cs"
+-this is where you tell EF what Models to make Tables for
+"public DbSet<Customer> Customers { get; set; }"

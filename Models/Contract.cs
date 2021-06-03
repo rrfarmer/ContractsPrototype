@@ -16,7 +16,6 @@ namespace Prototype.Models
         public int BillingPeriodId { get; set; }
         public BillingPeriod BillingPeriod { get; set; } // Dropdown static list
         public bool isActive { get; set; }
-        //public int NumberOfUnits { get; set; }
         public int OtherWarrantyId { get; set; }
         public OtherWarranty OtherWarranty { get; set; } // Dropdown static list
         public IList<Unit> Units { get; set; }

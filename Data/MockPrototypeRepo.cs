@@ -14,8 +14,10 @@ namespace Prototype.Data
             {
                 new Customer
                 {
-                    Id = 0,
-                    Contract = new Contract
+                Id = 0,
+                Contracts = new List<Contract>
+                {
+                    new Contract
                     {
                         Id = 0,
                         CustomerId = 0,
@@ -36,17 +38,47 @@ namespace Prototype.Data
                         {
                             Id = 0,
                             Name = "No Third Party"
+                        },
+                        Units = new List<Unit>
+                        {
+                            new Unit{
+                                Id = 0,
+                                MediaFilterId = 0,
+                                MediaFilter = new MediaFilter
+                                {
+                                    Id = 0,
+                                    Size = "16x16"
+                                }
+                            },
+                            new Unit{
+                                Id = 1,
+                                MediaFilterId = 0,
+                                MediaFilter = new MediaFilter
+                                {
+                                    Id = 0,
+                                    Size = "16x16"
+                                }
+                            }
+                        },
+                        ServiceVisits = new List<DateTime>
+                        {
+                            new DateTime(2021, 1, 1),
+                            new DateTime(2021, 2, 1)
                         }
-                    },
-                    FirstName = "Ryan",
-                    LastName = "Farmer",
-                    Phone = "555-555-5555",
-                    Email = "john@dough.com",
-                    Notes = "Some Notes here..."},
+                    }
+                },
+                FirstName = "Ryan",
+                LastName = "Farmer",
+                Phone = "555-555-5555",
+                Email = "john@dough.com",
+                Notes = "Some Notes here..."
+            },
                 new Customer
                 {
-                    Id = 0,
-                    Contract = new Contract
+                Id = 0,
+                Contracts = new List<Contract>
+                {
+                    new Contract
                     {
                         Id = 0,
                         CustomerId = 0,
@@ -67,17 +99,47 @@ namespace Prototype.Data
                         {
                             Id = 0,
                             Name = "No Third Party"
+                        },
+                        Units = new List<Unit>
+                        {
+                            new Unit{
+                                Id = 0,
+                                MediaFilterId = 0,
+                                MediaFilter = new MediaFilter
+                                {
+                                    Id = 0,
+                                    Size = "16x16"
+                                }
+                            },
+                            new Unit{
+                                Id = 1,
+                                MediaFilterId = 0,
+                                MediaFilter = new MediaFilter
+                                {
+                                    Id = 0,
+                                    Size = "16x16"
+                                }
+                            }
+                        },
+                        ServiceVisits = new List<DateTime>
+                        {
+                            new DateTime(2021, 1, 1),
+                            new DateTime(2021, 2, 1)
                         }
-                    },
-                    FirstName = "Ryan",
-                    LastName = "Farmer",
-                    Phone = "555-555-5555",
-                    Email = "john@dough.com",
-                    Notes = "Some Notes here..."},
+                    }
+                },
+                FirstName = "Ryan",
+                LastName = "Farmer",
+                Phone = "555-555-5555",
+                Email = "john@dough.com",
+                Notes = "Some Notes here..."
+            },
                 new Customer
                 {
-                    Id = 0,
-                    Contract = new Contract
+                Id = 0,
+                Contracts = new List<Contract>
+                {
+                    new Contract
                     {
                         Id = 0,
                         CustomerId = 0,
@@ -98,13 +160,41 @@ namespace Prototype.Data
                         {
                             Id = 0,
                             Name = "No Third Party"
+                        },
+                        Units = new List<Unit>
+                        {
+                            new Unit{
+                                Id = 0,
+                                MediaFilterId = 0,
+                                MediaFilter = new MediaFilter
+                                {
+                                    Id = 0,
+                                    Size = "16x16"
+                                }
+                            },
+                            new Unit{
+                                Id = 1,
+                                MediaFilterId = 0,
+                                MediaFilter = new MediaFilter
+                                {
+                                    Id = 0,
+                                    Size = "16x16"
+                                }
+                            }
+                        },
+                        ServiceVisits = new List<DateTime>
+                        {
+                            new DateTime(2021, 1, 1),
+                            new DateTime(2021, 2, 1)
                         }
-                    },
-                    FirstName = "Ryan",
-                    LastName = "Farmer",
-                    Phone = "555-555-5555",
-                    Email = "john@dough.com",
-                    Notes = "Some Notes here..."}
+                    }
+                },
+                FirstName = "Ryan",
+                LastName = "Farmer",
+                Phone = "555-555-5555",
+                Email = "john@dough.com",
+                Notes = "Some Notes here..."
+            }
             };
 
             return customers;
@@ -115,53 +205,56 @@ namespace Prototype.Data
             return new Customer
             {
                 Id = 0,
-                Contract = new Contract
+                Contracts = new List<Contract>
                 {
-                    Id = 0,
-                    CustomerId = 0,
-                    Address = "123 North Left Ave",
-                    City = "Altgard",
-                    State = "IO",
-                    Zip = 12345,
-                    StartDate = new DateTime(2021, 1, 1),
-                    BillingPeriodId = 0,
-                    BillingPeriod = new BillingPeriod
+                    new Contract
                     {
                         Id = 0,
-                        Name = "Monthly"
-                    },
-                    isActive = true,
-                    OtherWarrantyId = 0,
-                    OtherWarranty = new OtherWarranty
-                    {
-                        Id = 0,
-                        Name = "No Third Party"
-                    },
-                    Units = new List<Unit>
-                    {
-                        new Unit{
+                        CustomerId = 0,
+                        Address = "123 North Left Ave",
+                        City = "Altgard",
+                        State = "IO",
+                        Zip = 12345,
+                        StartDate = new DateTime(2021, 1, 1),
+                        BillingPeriodId = 0,
+                        BillingPeriod = new BillingPeriod
+                        {
                             Id = 0,
-                            MediaFilterId = 0,
-                            MediaFilter = new MediaFilter
-                            {
+                            Name = "Monthly"
+                        },
+                        isActive = true,
+                        OtherWarrantyId = 0,
+                        OtherWarranty = new OtherWarranty
+                        {
+                            Id = 0,
+                            Name = "No Third Party"
+                        },
+                        Units = new List<Unit>
+                        {
+                            new Unit{
                                 Id = 0,
-                                Size = "16x16"
+                                MediaFilterId = 0,
+                                MediaFilter = new MediaFilter
+                                {
+                                    Id = 0,
+                                    Size = "16x16"
+                                }
+                            },
+                            new Unit{
+                                Id = 1,
+                                MediaFilterId = 0,
+                                MediaFilter = new MediaFilter
+                                {
+                                    Id = 0,
+                                    Size = "16x16"
+                                }
                             }
                         },
-                        new Unit{
-                            Id = 1,
-                            MediaFilterId = 0,
-                            MediaFilter = new MediaFilter
-                            {
-                                Id = 0,
-                                Size = "16x16"
-                            }
+                        ServiceVisits = new List<DateTime>
+                        {
+                            new DateTime(2021, 1, 1),
+                            new DateTime(2021, 2, 1)
                         }
-                    },
-                    ServiceVisits = new List<DateTime>
-                    {
-                        new DateTime(2021, 1, 1),
-                        new DateTime(2021, 2, 1)
                     }
                 },
                 FirstName = "Ryan",
