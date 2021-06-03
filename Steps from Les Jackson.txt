@@ -58,3 +58,5 @@ Create DbContext class
 In appsettings.json add your connection string (look up example code)
 ***IRL you would use "User Secrets" to handle database connections***
 
+Add a connection service to Startup.cs (look up example codes)
+

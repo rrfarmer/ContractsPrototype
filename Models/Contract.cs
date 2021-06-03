@@ -19,6 +19,6 @@ namespace Prototype.Models
         public int OtherWarrantyId { get; set; }
         public OtherWarranty OtherWarranty { get; set; } // Dropdown static list
         public IList<Unit> Units { get; set; }
-        public IList<DateTime> ServiceVisits { get; set; }
+        public IList<ServiceVisit> ServiceVisits { get; set; }
     }
 }
