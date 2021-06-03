@@ -15,7 +15,6 @@ namespace Prototype.Data
                 new Customer
                 {
                     Id = 0,
-                    ContractId = 0,
                     Contract = new Contract
                     {
                         Id = 0,
@@ -32,7 +31,6 @@ namespace Prototype.Data
                             Name = "Monthly"
                         },
                         isActive = true,
-                        NumberOfUnits = 1,
                         OtherWarrantyId = 0,
                         OtherWarranty = new OtherWarranty
                         {
@@ -48,7 +46,6 @@ namespace Prototype.Data
                 new Customer
                 {
                     Id = 0,
-                    ContractId = 0,
                     Contract = new Contract
                     {
                         Id = 0,
@@ -65,7 +62,6 @@ namespace Prototype.Data
                             Name = "Monthly"
                         },
                         isActive = true,
-                        NumberOfUnits = 1,
                         OtherWarrantyId = 0,
                         OtherWarranty = new OtherWarranty
                         {
@@ -81,7 +77,6 @@ namespace Prototype.Data
                 new Customer
                 {
                     Id = 0,
-                    ContractId = 0,
                     Contract = new Contract
                     {
                         Id = 0,
@@ -98,7 +93,6 @@ namespace Prototype.Data
                             Name = "Monthly"
                         },
                         isActive = true,
-                        NumberOfUnits = 1,
                         OtherWarrantyId = 0,
                         OtherWarranty = new OtherWarranty
                         {
@@ -121,7 +115,6 @@ namespace Prototype.Data
             return new Customer
             {
                 Id = 0,
-                ContractId = 0,
                 Contract = new Contract
                 {
                     Id = 0,
@@ -138,12 +131,37 @@ namespace Prototype.Data
                         Name = "Monthly"
                     },
                     isActive = true,
-                    NumberOfUnits = 1,
                     OtherWarrantyId = 0,
                     OtherWarranty = new OtherWarranty
                     {
                         Id = 0,
                         Name = "No Third Party"
+                    },
+                    Units = new List<Unit>
+                    {
+                        new Unit{
+                            Id = 0,
+                            MediaFilterId = 0,
+                            MediaFilter = new MediaFilter
+                            {
+                                Id = 0,
+                                Size = "16x16"
+                            }
+                        },
+                        new Unit{
+                            Id = 1,
+                            MediaFilterId = 0,
+                            MediaFilter = new MediaFilter
+                            {
+                                Id = 0,
+                                Size = "16x16"
+                            }
+                        }
+                    },
+                    ServiceVisits = new List<DateTime>
+                    {
+                        new DateTime(2021, 1, 1),
+                        new DateTime(2021, 2, 1)
                     }
                 },
                 FirstName = "Ryan",

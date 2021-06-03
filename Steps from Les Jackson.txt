@@ -24,3 +24,22 @@ Create a controller file in a Controller folder
 
 Start creating what your API should do in the controller file.
 Example: "public ActionResult <IEnumerable<Customer>> GetAllCustomers()"
+
+Decorate each Action result with the type of request
+Example: "[HttpGet]" and "[HttpGet("{id}")]"
+
+Add Depencency Injection stuff:
+-In Startup services, add this for implementing one to another:
+   "services.AddScoped<IPrototypeRepo, MockPrototypeRepo>();"
+-In the Controller, add a readonly field of the interface type Ex: "IPrototypeRepo" and a constructor that takes the interface and maps it to the readonly interface datatype
+
+Create database login stuff
+
+Move on to Entity Framework Stuff!!!
+-in terminal install packages
+-From Nuget.org
+-use the .Net CLI tab
+"https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/6.0.0-preview.4.21253.1"
+
+-Mosh "Explicit Loading" video answers questions about multiple levels of objects and arrays
+
