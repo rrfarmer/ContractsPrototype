@@ -1,6 +1,7 @@
 // Data model for a contract
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Prototype.Models
 {
@@ -8,11 +9,17 @@ namespace Prototype.Models
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
+
+        [Required]
         public string Address { get; set; } // Could possible encapsulate this in an Address Object
         public string City { get; set; }
         public string State { get; set; }
         public int Zip { get; set; }
+
+        [Required]
         public DateTime StartDate { get; set; }
+
+        [Required]
         public int BillingPeriodId { get; set; }
         public BillingPeriod BillingPeriod { get; set; } // Dropdown static list
         public bool isActive { get; set; }

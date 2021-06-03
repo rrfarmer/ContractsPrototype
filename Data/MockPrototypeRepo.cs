@@ -60,10 +60,18 @@ namespace Prototype.Data
                                 }
                             }
                         },
-                        ServiceVisits = new List<DateTime>
+                        ServiceVisits = new List<ServiceVisit>
                         {
-                            new DateTime(2021, 1, 1),
-                            new DateTime(2021, 2, 1)
+                            new ServiceVisit
+                            {
+                                Id = 0,
+                                Visit = new DateTime(2021, 1, 1)
+                            },
+                            new ServiceVisit
+                            {
+                                Id = 0,
+                                Visit = new DateTime(2021, 1, 1)
+                            }
                         }
                     }
                 },
@@ -121,10 +129,18 @@ namespace Prototype.Data
                                 }
                             }
                         },
-                        ServiceVisits = new List<DateTime>
+                        ServiceVisits = new List<ServiceVisit>
                         {
-                            new DateTime(2021, 1, 1),
-                            new DateTime(2021, 2, 1)
+                            new ServiceVisit
+                            {
+                                Id = 0,
+                                Visit = new DateTime(2021, 1, 1)
+                            },
+                            new ServiceVisit
+                            {
+                                Id = 0,
+                                Visit = new DateTime(2021, 1, 1)
+                            }
                         }
                     }
                 },
@@ -182,10 +198,18 @@ namespace Prototype.Data
                                 }
                             }
                         },
-                        ServiceVisits = new List<DateTime>
+                        ServiceVisits = new List<ServiceVisit>
                         {
-                            new DateTime(2021, 1, 1),
-                            new DateTime(2021, 2, 1)
+                            new ServiceVisit
+                            {
+                                Id = 0,
+                                Visit = new DateTime(2021, 1, 1)
+                            },
+                            new ServiceVisit
+                            {
+                                Id = 0,
+                                Visit = new DateTime(2021, 1, 1)
+                            }
                         }
                     }
                 },
@@ -250,10 +274,18 @@ namespace Prototype.Data
                                 }
                             }
                         },
-                        ServiceVisits = new List<DateTime>
+                        ServiceVisits = new List<ServiceVisit>
                         {
-                            new DateTime(2021, 1, 1),
-                            new DateTime(2021, 2, 1)
+                            new ServiceVisit
+                            {
+                                Id = 0,
+                                Visit = new DateTime(2021, 1, 1)
+                            },
+                            new ServiceVisit
+                            {
+                                Id = 0,
+                                Visit = new DateTime(2021, 1, 1)
+                            }
                         }
                     }
                 },
