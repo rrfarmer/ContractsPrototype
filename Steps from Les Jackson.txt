@@ -54,3 +54,7 @@ Create DbContext class
 -inside the Data folder, "NameContext.cs"
 -this is where you tell EF what Models to make Tables for
 "public DbSet<Customer> Customers { get; set; }"
+
+In appsettings.json add your connection string (look up example code)
+***IRL you would use "User Secrets" to handle database connections***
+
