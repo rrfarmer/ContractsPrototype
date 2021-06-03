@@ -14,3 +14,13 @@ Build your starting Models
 
 Make a Data folder, this is for your "IProjectNameRepo" interface files go
 -Examples like "IEnermerable<ObjectName> GetAllObjects();" and "ObjectName GetObjectById(int id);"
+
+Build Mock objects with hard-coded data to return from the functions.
+
+Create a controller file in a Controller folder
+-This class will inherit from "ControllerBase" using Microsoft.AspNetCore.Mvc
+-Decorate the public class with [ApiController] to add some default behaviors
+-Decorate with a [Route("api/name")] // This will be the URL route
+
+Start creating what your API should do in the controller file.
+Example: "public ActionResult <IEnumerable<Customer>> GetAllCustomers()"
