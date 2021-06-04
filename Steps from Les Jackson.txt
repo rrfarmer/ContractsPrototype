@@ -60,3 +60,6 @@ In appsettings.json add your connection string (look up example code)
 
 Add a connection service to Startup.cs (look up example codes)
 
+Add an Initial Migration and check script, update database
+Seed the database tables with another migration (create an empty migration), update database
+- "dotnet ef database update"
