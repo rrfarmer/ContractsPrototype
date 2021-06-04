@@ -7,8 +7,8 @@ namespace Prototype.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             // Billing Period Inserts
-            migrationBuilder.Sql("INSERT INTO BillingPeriod (Name) VALUES ('Monthly')");
-            migrationBuilder.Sql("INSERT INTO BillingPeriod (Name) VALUES ('Annual')");
+            migrationBuilder.Sql("INSERT INTO BillingPeriods (Name) VALUES ('Monthly')");
+            migrationBuilder.Sql("INSERT INTO BillingPeriods (Name) VALUES ('Annual')");
 
             // Media Filter Inserts
             migrationBuilder.Sql("INSERT INTO MediaFilters (Size) VALUES ('14x14x1')");
