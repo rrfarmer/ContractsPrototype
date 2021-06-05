@@ -72,4 +72,18 @@ Write the code for the Implemtation of the interface
 
 Swap the Mock for the Sql in the Startup.cs in the "AddScoped"
 
+Start adding DTOs to replace what is sent over API to client
+- Separates internal model from external model, decoupling more gooder
 
+Add Extension:
+Automapper, "https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection/"
+
+Add this line in services in Startup, "services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());"
+
+Create a "Profiles" folder, create a "NameProfile.cs" file for setting up the mapping. See example code.
+
+In your controller, in the constructor, add an "IMapper mapper" as another parameter
+Make a new readonly field for _mapper and assign them in the ctor.
+
+Change the return type to a "NameReadDto"
+In the return Ok() return a "_mapper.Map<NameReadDto>(nameItem)"
