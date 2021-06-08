@@ -87,3 +87,19 @@ Make a new readonly field for _mapper and assign them in the ctor.
 
 Change the return type to a "NameReadDto"
 In the return Ok() return a "_mapper.Map<NameReadDto>(nameItem)"
+
+Moving on to make a Create endpoint
+In the Interface, add a CreateName
+Also add a bool return type called "SaveChanges"
+
+Go implement the methods where needed
+
+In the DTO folder, create a DTO for Create things, label [Required] where needed
+
+In Controller, make a POST method that uses the Read and Create DTOs as input/output
+- Go add the correct maps to your mapping profile <NameCreateDto, Name>
+- "var customerModel = _mapper.Map<Customer>(customerCreateDto);"
+- Call the CreateCustomer on the _repository and pass the customerModel to it (see code for example)
+- Save the changes with _repository.SaveChanges();
+- create a new var that maps the customerModel to CustomerReadDto
+- return a "CreatedAtRoute" by going back and adding Name="GetCustomerById" to that method in the HttpGet decoration

@@ -8,6 +8,11 @@ namespace Prototype.Data
 {
     public class MockPrototypeRepo : IPrototypeRepo
     {
+        public void CreateCustomer(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Customer> GetAllCustomers()
         {
             var customers = new List<Customer>
@@ -295,6 +300,11 @@ namespace Prototype.Data
                 Email = "john@dough.com",
                 Notes = "Some Notes here..."
             };
+        }
+
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
         }
     }
 }

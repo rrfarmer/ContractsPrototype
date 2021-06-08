@@ -30,7 +30,7 @@ namespace Prototype.Controllers
         }
 
         // GET api/customers/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCustomerById")]
         public ActionResult<CustomerReadDto> GetCustomerById(int id)
         {
             var customerItem = _repository.GetCustomerById(id);
@@ -41,6 +41,19 @@ namespace Prototype.Controllers
             }
 
             return NotFound();
+        }
+
+        // POST api/customers/
+        [HttpPost]
+        public ActionResult<CustomerReadDto> CreateCustomer(CustomerCreateDto customerCreateDto)
+        {
+            var customerModel = _mapper.Map<Customer>(customerCreateDto); // Probably need to verify incoming Customer data
+            _repository.CreateCustomer(customerModel);
+            _repository.SaveChanges();
+
+            var customerReadDto = _mapper.Map<CustomerReadDto>(customerModel);
+
+            return CreatedAtRoute(nameof(GetCustomerById), new { Id = customerReadDto.Id }, customerReadDto);
         }
     }
 }

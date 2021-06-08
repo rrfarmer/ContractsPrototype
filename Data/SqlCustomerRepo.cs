@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,17 @@ namespace Prototype.Data
         {
             _context = context;
         }
+
+        public void CreateCustomer(Customer customer)
+        {
+            if (customer == null)
+            {
+                throw new ArgumentNullException(nameof(customer));
+            }
+
+            _context.Customers.Add(customer);
+        }
+
         public IEnumerable<Customer> GetAllCustomers()
         {
             return _context.Customers.ToList();
@@ -30,6 +42,12 @@ namespace Prototype.Data
             var units = _context.Units.Include(u => u.MediaFilter).ToList();
 
             return customer;
+        }
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
+
         }
     }
 }

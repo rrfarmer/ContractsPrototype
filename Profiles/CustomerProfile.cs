@@ -9,6 +9,7 @@ namespace Prototype.Profiles
         public CustomerProfile()
         {
             CreateMap<Customer, CustomerReadDto>();
+            CreateMap<CustomerCreateDto, Customer>();
         }
     }
 }
