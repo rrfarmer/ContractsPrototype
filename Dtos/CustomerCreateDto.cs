@@ -1,4 +1,4 @@
-// For mapping a new customer
+// DTO For creating a new customer
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Prototype.Models;

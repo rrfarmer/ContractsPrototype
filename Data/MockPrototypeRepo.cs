@@ -8,6 +8,11 @@ namespace Prototype.Data
 {
     public class MockPrototypeRepo : IPrototypeRepo
     {
+        public void CreateContract(Contract contract)
+        {
+            throw new NotImplementedException();
+        }
+
         public void CreateCustomer(Customer customer)
         {
             throw new NotImplementedException();

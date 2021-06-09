@@ -55,5 +55,20 @@ namespace Prototype.Controllers
 
             return CreatedAtRoute(nameof(GetCustomerById), new { Id = customerReadDto.Id }, customerReadDto);
         }
+
+        // POST api/customers/contract/
+        [HttpPost]
+        [Route("~/api/customers/contract")]
+        public ActionResult<CustomerReadDto> CreateContract(ContractCreateDto contractCreateDto)
+        {
+            // TODO: Create a function that checks if CustomerID exists
+
+            var contractModel = _mapper.Map<Contract>(contractCreateDto);
+            _repository.CreateContract(contractModel);
+            _repository.SaveChanges();
+
+            //return CreatedAtRoute(nameof(GetCustomerById), new { Id = contractModel.CustomerId });
+            return Ok();
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace Prototype.Profiles
         {
             CreateMap<Customer, CustomerReadDto>();
             CreateMap<CustomerCreateDto, Customer>();
+            CreateMap<Contract, ContractReadDto>();
+            CreateMap<ContractCreateDto, Contract>();
         }
     }
 }

@@ -15,6 +15,16 @@ namespace Prototype.Data
             _context = context;
         }
 
+        public void CreateContract(Contract contract)
+        {
+            if (contract == null)
+            {
+                throw new ArgumentNullException(nameof(contract));
+            }
+
+            _context.Contracts.Add(contract);
+        }
+
         public void CreateCustomer(Customer customer)
         {
             if (customer == null)
