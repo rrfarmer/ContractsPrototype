@@ -67,8 +67,8 @@ namespace Prototype.Controllers
             _repository.CreateContract(contractModel);
             _repository.SaveChanges();
 
-            //return CreatedAtRoute(nameof(GetCustomerById), new { Id = contractModel.CustomerId });
-            return Ok();
+            return CreatedAtRoute(nameof(GetCustomerById), new { Id = contractModel.CustomerId });
+            //return Created();
         }
     }
 }
