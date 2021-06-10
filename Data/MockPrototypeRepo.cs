@@ -6,7 +6,7 @@ using Prototype.Models;
 
 namespace Prototype.Data
 {
-    public class MockPrototypeRepo : IPrototypeRepo
+    public class MockPrototypeRepo : ICustomerRepo
     {
         public void CreateContract(Contract contract)
         {

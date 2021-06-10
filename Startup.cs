@@ -38,7 +38,8 @@ namespace Prototype
             });
 
             // This is dependency injection, can swap the 2nd arg when implementaion changes
-            services.AddScoped<IPrototypeRepo, SqlCustomerRepo>();
+            services.AddScoped<ICustomerRepo, SqlCustomerRepo>();
+            services.AddScoped<IContractRepo, SqlContractRepo>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }

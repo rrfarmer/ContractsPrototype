@@ -11,11 +11,11 @@ namespace Prototype.Controllers
     [ApiController]
     public class CustomersController : Controller
     {
-        private readonly IPrototypeRepo _repository;
+        private readonly ICustomerRepo _repository;
         private readonly IMapper _mapper;
 
         // Constructor uses Dependency Injection to map
-        public CustomersController(IPrototypeRepo repository, IMapper mapper)
+        public CustomersController(ICustomerRepo repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -54,21 +54,6 @@ namespace Prototype.Controllers
             var customerReadDto = _mapper.Map<CustomerReadDto>(customerModel);
 
             return CreatedAtRoute(nameof(GetCustomerById), new { Id = customerReadDto.Id }, customerReadDto);
-        }
-
-        // POST api/customers/contract/
-        [HttpPost]
-        [Route("~/api/customers/contract")]
-        public ActionResult<CustomerReadDto> CreateContract(ContractCreateDto contractCreateDto)
-        {
-            // TODO: Create a function that checks if CustomerID exists
-
-            var contractModel = _mapper.Map<Contract>(contractCreateDto);
-            _repository.CreateContract(contractModel);
-            _repository.SaveChanges();
-
-            return CreatedAtRoute(nameof(GetCustomerById), new { Id = contractModel.CustomerId });
-            //return Created();
         }
     }
 }

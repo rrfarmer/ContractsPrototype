@@ -6,42 +6,41 @@ using Prototype.Models;
 
 namespace Prototype.Data
 {
-    public class SqlCustomerRepo : ICustomerRepo
+    public class SqlContractRepo : IContractRepo
     {
         private readonly PrototypeContext _context;
 
-        public SqlCustomerRepo(PrototypeContext context)
+        public SqlContractRepo(PrototypeContext context)
         {
             _context = context;
         }
 
-        public void CreateCustomer(Customer customer)
+        public void CreateContract(Contract contract)
         {
-            if (customer == null)
+            if (contract == null)
             {
-                throw new ArgumentNullException(nameof(customer));
+                throw new ArgumentNullException(nameof(contract));
             }
 
-            _context.Customers.Add(customer);
+            _context.Contracts.Add(contract);
         }
 
-        public IEnumerable<Customer> GetAllCustomers()
+        public IEnumerable<Contract> GetAllContracts()
         {
-            return _context.Customers.ToList();
+            return _context.Contracts.ToList();
         }
 
-        public Customer GetCustomerById(int id)
+        public Contract GetContractById(int id)
         {
-            var customer = _context.Customers.FirstOrDefault(p => p.Id == id);
-            var contracts = _context.Contracts.Where(p => p.CustomerId == id)
+            var contract = _context.Contracts.Where(p => p.Id == id)
                                               .Include(c => c.BillingPeriod)
                                               .Include(c => c.OtherWarranty)
                                               .Include(c => c.Units)
                                               .Include(c => c.ServiceVisits)
-                                              .ToList();
+                                              .Single();
             var units = _context.Units.Include(u => u.MediaFilter).ToList();
 
-            return customer;
+            return contract;
         }
 
         public bool SaveChanges()
