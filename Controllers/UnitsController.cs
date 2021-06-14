@@ -15,7 +15,7 @@ namespace Prototype.Controllers
         private readonly IMapper _mapper;
 
         // Constructor uses Dependency Injection to map
-        public CustomersController(ICustomerRepo repository, IMapper mapper)
+        public UnitsController(IUnitRepo repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
