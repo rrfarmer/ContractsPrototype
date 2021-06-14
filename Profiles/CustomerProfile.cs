@@ -8,6 +8,7 @@ namespace Prototype.Profiles
     {
         public CustomerProfile()
         {
+            // TODO: Break this out into sep mapping profiles
             CreateMap<Customer, CustomerReadDto>();
             CreateMap<CustomerCreateDto, Customer>();
             CreateMap<Contract, ContractReadDto>();

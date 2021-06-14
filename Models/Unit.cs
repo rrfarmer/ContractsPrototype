@@ -8,8 +8,8 @@ namespace Prototype.Models
     {
         public int Id { get; set; }
 
-        // [Required]
-        // public int ContractId { get; set; }
+        [Required]
+        public int ContractId { get; set; }
         public int MediaFilterId { get; set; }
         public MediaFilter MediaFilter { get; set; } // Drop down list
     }
