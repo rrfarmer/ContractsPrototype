@@ -6,7 +6,7 @@ namespace Prototype.Data
     public interface IUnitRepo
     {
         bool SaveChanges();
-        IEnumerable<Unit> GetUnits();
+        IEnumerable<Unit> GetUnitsInContract(int id);
         Unit GetUnitById(int id);
         void CreateUnit(Unit unit);
     }

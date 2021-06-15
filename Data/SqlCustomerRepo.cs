@@ -32,7 +32,7 @@ namespace Prototype.Data
 
         public Customer GetCustomerById(int id)
         {
-            var customer = _context.Customers.FirstOrDefault(p => p.Id == id);
+            var customer = _context.Customers.First(p => p.Id == id);
             var contracts = _context.Contracts.Where(p => p.CustomerId == id)
                                               .Include(c => c.BillingPeriod)
                                               .Include(c => c.OtherWarranty)

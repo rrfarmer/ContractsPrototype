@@ -10,19 +10,32 @@ namespace Prototype.Data
     {
         private readonly PrototypeContext _context;
 
+        public SqlUnitRepo(PrototypeContext context)
+        {
+            _context = context;
+        }
+
         public void CreateUnit(Unit unit)
         {
-            throw new NotImplementedException();
+            if (unit == null)
+            {
+                throw new ArgumentNullException(nameof(unit));
+            }
+
+            _context.Units.Add(unit);
+        }
+
+        public IEnumerable<Unit> GetUnitsInContract(int id)
+        {
+            return _context.Units.Where(u => u.ContractId == id).Include(u => u.MediaFilter).ToList();
         }
 
         public Unit GetUnitById(int id)
         {
-            throw new NotImplementedException();
-        }
+            var unit = _context.Units.First(u => u.Id == id);
+            var mediaFilters = _context.Units.Include(u => u.MediaFilter).Single();
 
-        public IEnumerable<Unit> GetUnits()
-        {
-            throw new NotImplementedException();
+            return unit;
         }
 
         public bool SaveChanges()

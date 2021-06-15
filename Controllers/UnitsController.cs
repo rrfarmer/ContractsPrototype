@@ -18,7 +18,29 @@ namespace Prototype.Controllers
         public UnitsController(IUnitRepo repository, IMapper mapper)
         {
             _repository = repository;
-            _mapper = mapper;
+            //_mapper = mapper;
+        }
+
+        // GET api/units/
+        [HttpGet]
+        public ActionResult<IEnumerable<Unit>> GetUnits(int id)
+        {
+            var units = _repository.GetUnitsInContract(id);
+            return Ok(units);
+        }
+
+        // GET api/units/{id}
+        [HttpGet("{id}", Name = "GetUnit")]
+        public ActionResult<Unit> GetUnitById(int id)
+        {
+            var unitItem = _repository.GetUnitById(id);
+
+            if (unitItem != null)
+            {
+                return Ok(unitItem);
+            }
+
+            return NotFound();
         }
 
     }
