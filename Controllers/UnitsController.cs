@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Prototype.Data;
 using Prototype.Dtos;
 using Prototype.Models;
+using System.Linq;
 
 namespace Prototype.Controllers
 {
@@ -26,6 +27,12 @@ namespace Prototype.Controllers
         public ActionResult<IEnumerable<Unit>> GetUnitsInContract(int contractId)
         {
             var units = _repository.GetUnitsInContract(contractId);
+
+            if (!units.Any())
+            {
+                return NotFound();
+            }
+
             return Ok(_mapper.Map<IEnumerable<UnitReadDto>>(units));
         }
 
