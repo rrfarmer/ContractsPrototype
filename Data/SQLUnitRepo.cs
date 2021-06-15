@@ -33,7 +33,7 @@ namespace Prototype.Data
         public Unit GetUnitById(int id)
         {
             var unit = _context.Units.First(u => u.Id == id);
-            var mediaFilters = _context.Units.Include(u => u.MediaFilter).Single();
+            var mediaFilters = _context.Units.Include(u => u.MediaFilter).ToList();
 
             return unit;
         }

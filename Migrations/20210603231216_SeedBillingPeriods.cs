@@ -11,7 +11,7 @@ namespace Prototype.Migrations
             migrationBuilder.Sql("INSERT INTO BillingPeriods (Name) VALUES ('Annual')");
 
             // Media Filter Inserts
-            migrationBuilder.Sql("INSERT INTO MediaFilters (Size) VALUES ('14x14x1')");
+            migrationBuilder.Sql("INSERT INTO MediaFilters (Size) VALUES ('Unknown')"); // Hard coded default
             migrationBuilder.Sql("INSERT INTO MediaFilters (Size) VALUES ('21x21x1')");
 
             // Other Warranties

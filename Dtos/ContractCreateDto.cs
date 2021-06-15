@@ -8,7 +8,6 @@ namespace Prototype.Dtos
 {
     public class ContractCreateDto
     {
-        //public int Id { get; set; }
 
         [Required]
         public int CustomerId { get; set; }
