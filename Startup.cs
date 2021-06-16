@@ -41,6 +41,7 @@ namespace Prototype
             services.AddScoped<ICustomerRepo, SqlCustomerRepo>();
             services.AddScoped<IContractRepo, SqlContractRepo>();
             services.AddScoped<IUnitRepo, SqlUnitRepo>();
+            services.AddScoped<IWarrantyRepo, SqlWarrantyRepo>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }

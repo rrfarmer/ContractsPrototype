@@ -15,6 +15,8 @@ namespace Prototype.Profiles
             CreateMap<ContractCreateDto, Contract>();
             CreateMap<Unit, UnitReadDto>();
             CreateMap<UnitCreateDto, Unit>();
+            CreateMap<OtherWarranty, WarrantyReadDto>();
+            CreateMap<WarrantyCreateDto, OtherWarranty>();
         }
     }
 }
