@@ -17,6 +17,8 @@ namespace Prototype.Profiles
             CreateMap<UnitCreateDto, Unit>();
             CreateMap<OtherWarranty, WarrantyReadDto>();
             CreateMap<WarrantyCreateDto, OtherWarranty>();
+            CreateMap<MediaFilter, MediaFilterReadDto>();
+            CreateMap<MediaFilterCreateDto, MediaFilter>();
         }
     }
 }

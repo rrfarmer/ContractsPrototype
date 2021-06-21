@@ -42,6 +42,7 @@ namespace Prototype
             services.AddScoped<IContractRepo, SqlContractRepo>();
             services.AddScoped<IUnitRepo, SqlUnitRepo>();
             services.AddScoped<IWarrantyRepo, SqlWarrantyRepo>();
+            services.AddScoped<IMediaFilterRepo, SqlMediaFilterRepo>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
