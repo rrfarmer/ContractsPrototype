@@ -6,7 +6,8 @@ namespace Prototype.Data
     public interface IWarrantyRepo
     {
         bool SaveChanges();
-        OtherWarranty GetWarrantyId(int id);
+        IEnumerable<OtherWarranty> GetAllWarranties(); // For utility and testing purposes
+        OtherWarranty GetWarrantyById(int id);
         void CreateWarranty(OtherWarranty warranty);
     }
 }

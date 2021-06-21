@@ -8,19 +8,38 @@ namespace Prototype.Data
 {
     public class SqlWarrantyRepo : IWarrantyRepo
     {
-        public void CreateWarranty(OtherWarranty warranty)
+        private readonly PrototypeContext _context;
+
+        public SqlWarrantyRepo(PrototypeContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public OtherWarranty GetWarrantyId(int id)
+        public void CreateWarranty(OtherWarranty warranty)
         {
-            throw new NotImplementedException();
+            if (warranty == null)
+            {
+                throw new ArgumentNullException(nameof(warranty));
+            }
+
+            _context.OtherWarranties.Add(warranty);
+        }
+
+        public IEnumerable<OtherWarranty> GetAllWarranties()
+        {
+            return _context.OtherWarranties.ToList();
+        }
+
+        public OtherWarranty GetWarrantyById(int id)
+        {
+            var warranty = _context.OtherWarranties.First(w => w.Id == id);
+
+            return warranty;
         }
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return (_context.SaveChanges() >= 0);
         }
     }
 }
