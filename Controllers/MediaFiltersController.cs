@@ -29,7 +29,7 @@ namespace Prototype.Controllers
             return Ok(_mapper.Map<IEnumerable<MediaFilterReadDto>>(mediaFilterItems));
         }
 
-        // GET api/cilters/{id}
+        // GET api/filters/{id}
         [HttpGet("{id}", Name = "GetMediaFilterById")]
         public ActionResult<MediaFilterReadDto> GetMediaFilterById(int id)
         {
@@ -43,7 +43,17 @@ namespace Prototype.Controllers
             return NotFound();
         }
 
+        // POST api/filters/
+        [HttpPost]
+        public ActionResult<MediaFilterReadDto> CreateMediaFilter(MediaFilterCreateDto mediaFilterCreateDto)
+        {
+            var filterModel = _mapper.Map<MediaFilter>(mediaFilterCreateDto); // Probably need to verify incoming MediaFilter data
+            _repository.CreateMediaFilter(filterModel);
+            _repository.SaveChanges();
 
+            var filterReadDto = _mapper.Map<MediaFilterReadDto>(filterModel);
 
+            return CreatedAtRoute(nameof(GetMediaFilterById), new { Id = filterReadDto.Id }, filterReadDto);
+        }
     }
 }
