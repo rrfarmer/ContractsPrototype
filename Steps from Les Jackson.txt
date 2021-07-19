@@ -1,0 +1,105 @@
+Steps from Les Jackson on .Net Core MVC REST API Build
+
+Get some scaffold code with:
+dotnet new webapi -n ProjectName (do this inside the folder you want the project in)
+
+Open Project in VS Code:
+code -r ProjectName
+
+Startup.cs is where a lot of config goes
+
+Create a Models folder, this is where all data Models go
+
+Build your starting Models
+
+Make a Data folder, this is for your "IProjectNameRepo" interface files go
+-Examples like "IEnermerable<ObjectName> GetAllObjects();" and "ObjectName GetObjectById(int id);"
+
+Build Mock objects with hard-coded data to return from the functions.
+
+Create a controller file in a Controller folder
+-This class will inherit from "ControllerBase" using Microsoft.AspNetCore.Mvc
+-Decorate the public class with [ApiController] to add some default behaviors
+-Decorate with a [Route("api/name")] // This will be the URL route
+
+Start creating what your API should do in the controller file.
+Example: "public ActionResult <IEnumerable<Customer>> GetAllCustomers()"
+
+Decorate each Action result with the type of request
+Example: "[HttpGet]" and "[HttpGet("{id}")]"
+
+Add Depencency Injection stuff:
+-In Startup services, add this for implementing one to another:
+   "services.AddScoped<IPrototypeRepo, MockPrototypeRepo>();"
+-In the Controller, add a readonly field of the interface type Ex: "IPrototypeRepo" and a constructor that takes the interface and maps it to the readonly interface datatype
+
+Create database login stuff
+
+Move on to Entity Framework Stuff!!!
+-in terminal install packages
+-From Nuget.org
+-use the .Net CLI tab
+
+Packages:
+"https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/6.0.0-preview.4.21253.1"
+"https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design/6.0.0-preview.4.21253.1"
+"dotnet add package Microsoft.EntityFrameworkCore.SqlServer" - or find package for the right database you're using
+
+Check if you have EF tools installed by using "dotnet ef"
+If not, intall them with "dotnet tool install --global dotnet-ef"
+
+-Mosh "Explicit Loading" video answers questions about multiple levels of objects and arrays
+
+Create DbContext class
+-inside the Data folder, "NameContext.cs"
+-this is where you tell EF what Models to make Tables for
+"public DbSet<Customer> Customers { get; set; }"
+
+In appsettings.json add your connection string (look up example code)
+***IRL you would use "User Secrets" to handle database connections***
+
+Add a connection service to Startup.cs (look up example codes)
+
+Add an Initial Migration and check script, update database
+Seed the database tables with another migration (create an empty migration), update database
+"dotnet ef database update"
+-Also put in some test data
+
+In Data folder create a "SqlNameRepo.cs" - This will be the implementation of the SQL pulling from DB instead of Mock
+Use "Dependency Injection" again to make a private readonly _context var as type "NameContext"
+Use a constructor to map _context = context (see code example)
+Write the code for the Implemtation of the interface
+
+Swap the Mock for the Sql in the Startup.cs in the "AddScoped"
+
+Start adding DTOs to replace what is sent over API to client
+- Separates internal model from external model, decoupling more gooder
+
+Add Extension:
+Automapper, "https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection/"
+
+Add this line in services in Startup, "services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());"
+
+Create a "Profiles" folder, create a "NameProfile.cs" file for setting up the mapping. See example code.
+
+In your controller, in the constructor, add an "IMapper mapper" as another parameter
+Make a new readonly field for _mapper and assign them in the ctor.
+
+Change the return type to a "NameReadDto"
+In the return Ok() return a "_mapper.Map<NameReadDto>(nameItem)"
+
+Moving on to make a Create endpoint
+In the Interface, add a CreateName
+Also add a bool return type called "SaveChanges"
+
+Go implement the methods where needed
+
+In the DTO folder, create a DTO for Create things, label [Required] where needed
+
+In Controller, make a POST method that uses the Read and Create DTOs as input/output
+- Go add the correct maps to your mapping profile <NameCreateDto, Name>
+- "var customerModel = _mapper.Map<Customer>(customerCreateDto);"
+- Call the CreateCustomer on the _repository and pass the customerModel to it (see code for example)
+- Save the changes with _repository.SaveChanges();
+- create a new var that maps the customerModel to CustomerReadDto
+- return a "CreatedAtRoute" by going back and adding Name="GetCustomerById" to that method in the HttpGet decoration
