@@ -103,3 +103,7 @@ In Controller, make a POST method that uses the Read and Create DTOs as input/ou
 - Save the changes with _repository.SaveChanges();
 - create a new var that maps the customerModel to CustomerReadDto
 - return a "CreatedAtRoute" by going back and adding Name="GetCustomerById" to that method in the HttpGet decoration
+
+
+// Skipping the UPDATE section and only doing PATCH for now
+
