@@ -7,7 +7,7 @@ namespace Prototype.Data
     {
         bool SaveChanges();
         IEnumerable<MediaFilter> GetAllMediaFilters();
-        Customer GetMediaFilterById(int id);
+        MediaFilter GetMediaFilterById(int id);
         void CreateMediaFilter(MediaFilter filter);
     }
 }

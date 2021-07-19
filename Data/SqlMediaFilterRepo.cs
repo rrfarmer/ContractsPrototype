@@ -9,24 +9,36 @@ namespace Prototype.Data
     public class SqlMediaFilterRepo : IMediaFilterRepo
     {
         private readonly PrototypeContext _context;
+
+        public SqlMediaFilterRepo(PrototypeContext context)
+        {
+            _context = context;
+        }
+
         public void CreateMediaFilter(MediaFilter filter)
         {
-            throw new NotImplementedException();
+            if (filter == null)
+            {
+                throw new ArgumentNullException(nameof(filter));
+            }
+
+            _context.MediaFilters.Add(filter);
         }
 
         public IEnumerable<MediaFilter> GetAllMediaFilters()
         {
-            throw new NotImplementedException();
+            return _context.MediaFilters.ToList();
         }
 
-        public Customer GetMediaFilterById(int id)
+        public MediaFilter GetMediaFilterById(int id)
         {
-            throw new NotImplementedException();
+            var filter = _context.MediaFilters.First(p => p.Id == id);
+            return filter;
         }
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

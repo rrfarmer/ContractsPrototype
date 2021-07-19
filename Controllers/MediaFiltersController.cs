@@ -11,20 +11,39 @@ namespace Prototype.Controllers
     [ApiController]
     public class MediaFiltersController : Controller
     {
-        private readonly ICustomerRepo _repository;
+        private readonly IMediaFilterRepo _repository;
         private readonly IMapper _mapper;
 
-        public MediaFiltersController(ICustomerRepo repository, IMapper mapper)
+        public MediaFiltersController(IMediaFilterRepo repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
 
-        // // GET api/filters/
-        // [HttpGet]
-        // public ActionResult<IEnumerable<MediaFilter>> GetAllMediaFilters()
-        // {
+        // GET api/filters/
+        [HttpGet]
+        public ActionResult<IEnumerable<MediaFilterReadDto>> GetAllMediaFilters()
+        {
+            var mediaFilterItems = _repository.GetAllMediaFilters();
 
-        // }
+            return Ok(_mapper.Map<IEnumerable<MediaFilterReadDto>>(mediaFilterItems));
+        }
+
+        // GET api/cilters/{id}
+        [HttpGet("{id}", Name = "GetMediaFilterById")]
+        public ActionResult<MediaFilterReadDto> GetMediaFilterById(int id)
+        {
+            var mediaFilterItem = _repository.GetMediaFilterById(id);
+
+            if (mediaFilterItem != null)
+            {
+                return Ok(_mapper.Map<MediaFilterReadDto>(mediaFilterItem));
+            }
+
+            return NotFound();
+        }
+
+
+
     }
 }
