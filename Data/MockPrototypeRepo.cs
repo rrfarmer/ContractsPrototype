@@ -311,5 +311,10 @@ namespace Prototype.Data
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateCustomer(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

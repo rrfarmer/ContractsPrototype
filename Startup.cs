@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Prototype.Data;
+using Newtonsoft.Json.Serialization;
 
 namespace Prototype
 {
@@ -30,6 +31,11 @@ namespace Prototype
         {
             services.AddDbContext<PrototypeContext>(opt => opt.UseSqlServer
                 (Configuration.GetConnectionString("PrototypeConnection")));
+
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

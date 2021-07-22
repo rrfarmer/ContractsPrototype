@@ -55,5 +55,24 @@ namespace Prototype.Controllers
 
             return CreatedAtRoute(nameof(GetCustomerById), new { Id = customerReadDto.Id }, customerReadDto);
         }
+
+        // PUT api/cusotmers/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateCustomer(int id, CustomerUpdateDto customerUpdateDto)
+        {
+            var customerModelFromRepo = _repository.GetCustomerById(id);
+            if (customerModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(customerUpdateDto, customerModelFromRepo);
+            _repository.UpdateCustomer(customerModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+
+        }
     }
 }
