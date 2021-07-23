@@ -112,7 +112,7 @@ Implement the Repo with // Nothing (weird?)
 Duplicate the Create DTO as the Update DTO, customize as needed (to make it more efficient)
 Add PUT in the Controller, see code for example
 Create AutoMapper in the Profile "CreateMap<CustomerUpdateDto, Customer>();"
-Finish teh PUT in Controller
+Finish the PUT in Controller
 
 PATCH Section
 ==============
@@ -120,5 +120,7 @@ Add these packages:
 "dotnet add package Microsoft.AspNetCore.JsonPatch"
 "dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson"
 
-Add to Startup config, AddController newtonsoft (see code)
+Add to Startup config, AddController newtonsoft (see code "SerializerSettings")
+Add "using Newtonsoft.Json.Serialization;" manually
+Add another Map to the Profile for Thing -> ThingUpdateDto
 

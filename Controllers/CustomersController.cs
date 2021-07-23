@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Prototype.Data;
 using Prototype.Dtos;
@@ -60,13 +61,40 @@ namespace Prototype.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateCustomer(int id, CustomerUpdateDto customerUpdateDto)
         {
-            var customerModelFromRepo = _repository.GetCustomerById(id);
+            var customerModelFromRepo = _repository.GetCustomerById(id); //TODO: refactor to own function
             if (customerModelFromRepo == null)
             {
                 return NotFound();
             }
 
             _mapper.Map(customerUpdateDto, customerModelFromRepo);
+            _repository.UpdateCustomer(customerModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        // Patch api/commands/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialCustomerUpdate(int id, JsonPatchDocument<CustomerUpdateDto> patchDoc)
+        {
+            var customerModelFromRepo = _repository.GetCustomerById(id); //TODO: refactor to own function
+            if (customerModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var customerToPatch = _mapper.Map<CustomerUpdateDto>(customerModelFromRepo);
+            patchDoc.ApplyTo(customerToPatch, ModelState);
+
+            if (!TryValidateModel(customerToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(customerToPatch, customerModelFromRepo);
+
             _repository.UpdateCustomer(customerModelFromRepo);
 
             _repository.SaveChanges();
