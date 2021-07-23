@@ -123,4 +123,9 @@ Add these packages:
 Add to Startup config, AddController newtonsoft (see code "SerializerSettings")
 Add "using Newtonsoft.Json.Serialization;" manually
 Add another Map to the Profile for Thing -> ThingUpdateDto
+Att ActionResult to Controller, "PartialThingUpdate"
+See Code for example
 
+
+DELETE Section
+===============

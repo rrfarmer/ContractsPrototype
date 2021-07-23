@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Prototype.Data;
 using Prototype.Dtos;
@@ -70,6 +71,33 @@ namespace Prototype.Controllers
             }
 
             _mapper.Map(contractUpdateDto, contractModelFromRepo);
+            _repository.UpdateContract(contractModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        // Patch api/commands/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialCustomerUpdate(int id, JsonPatchDocument<ContractUpdateDto> patchDoc)
+        {
+            var contractModelFromRepo = _repository.GetContractById(id); //TODO: refactor to own function
+            if (contractModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var contractToPatch = _mapper.Map<ContractUpdateDto>(contractModelFromRepo);
+            patchDoc.ApplyTo(contractToPatch, ModelState);
+
+            if (!TryValidateModel(contractToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(contractToPatch, contractModelFromRepo);
+
             _repository.UpdateContract(contractModelFromRepo);
 
             _repository.SaveChanges();
