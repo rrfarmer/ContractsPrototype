@@ -15,15 +15,19 @@ namespace Prototype.Profiles
 
             CreateMap<Contract, ContractReadDto>();
             CreateMap<ContractCreateDto, Contract>();
+            CreateMap<ContractUpdateDto, Contract>();
 
             CreateMap<Unit, UnitReadDto>();
             CreateMap<UnitCreateDto, Unit>();
+            CreateMap<UnitUpdateDto, Unit>();
 
             CreateMap<OtherWarranty, WarrantyReadDto>();
             CreateMap<WarrantyCreateDto, OtherWarranty>();
+            CreateMap<WarrantyUpdateDto, OtherWarranty>();
 
             CreateMap<MediaFilter, MediaFilterReadDto>();
             CreateMap<MediaFilterCreateDto, MediaFilter>();
+            CreateMap<MediaFilterUpdateDto, MediaFilter>();
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Prototype.Controllers
             return CreatedAtRoute(nameof(GetCustomerById), new { Id = customerReadDto.Id }, customerReadDto);
         }
 
-        // PUT api/cusotmers/{id}
+        // PUT api/customers/{id}
         [HttpPut("{id}")]
         public ActionResult UpdateCustomer(int id, CustomerUpdateDto customerUpdateDto)
         {
@@ -72,7 +72,6 @@ namespace Prototype.Controllers
             _repository.SaveChanges();
 
             return NoContent();
-
         }
     }
 }

@@ -47,5 +47,10 @@ namespace Prototype.Data
         {
             return (_context.SaveChanges() >= 0);
         }
+
+        public void UpdateContract(Contract contract)
+        {
+            // Nothing
+        }
     }
 }

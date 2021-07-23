@@ -9,5 +9,6 @@ namespace Prototype.Data
         IEnumerable<Unit> GetUnitsInContract(int id);
         Unit GetUnitById(int id);
         void CreateUnit(Unit unit);
+        void UpdateUnit(Unit unit);
     }
 }

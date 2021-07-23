@@ -57,6 +57,24 @@ namespace Prototype.Controllers
             return CreatedAtRoute(nameof(GetWarrantyById), new { Id = warrantyReadDto.Id }, warrantyReadDto);
         }
 
+        // PUT api/warranties/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateWarranty(int id, WarrantyUpdateDto warrantyUpdateDto)
+        {
+            var warrantyModelFromRepo = _repository.GetWarrantyById(id);
+            if (warrantyModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(warrantyUpdateDto, warrantyModelFromRepo);
+            _repository.UpdateWarranty(warrantyModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 
 }

@@ -9,5 +9,6 @@ namespace Prototype.Data
         IEnumerable<Contract> GetAllContracts();
         Contract GetContractById(int id);
         void CreateContract(Contract contract);
+        void UpdateContract(Contract contract);
     }
 }

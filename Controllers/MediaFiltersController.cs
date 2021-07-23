@@ -55,5 +55,22 @@ namespace Prototype.Controllers
 
             return CreatedAtRoute(nameof(GetMediaFilterById), new { Id = filterReadDto.Id }, filterReadDto);
         }
+        // PUT api/filters/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateMediaFilter(int id, MediaFilterUpdateDto mediaFilterUpdateDto)
+        {
+            var mediaFilterModelFromRepo = _repository.GetMediaFilterById(id);
+            if (mediaFilterModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(mediaFilterUpdateDto, mediaFilterModelFromRepo);
+            _repository.UpdateMediaFilter(mediaFilterModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

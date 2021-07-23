@@ -9,5 +9,6 @@ namespace Prototype.Data
         IEnumerable<OtherWarranty> GetAllWarranties(); // For utility and testing purposes
         OtherWarranty GetWarrantyById(int id);
         void CreateWarranty(OtherWarranty warranty);
+        void UpdateWarranty(OtherWarranty warranty);
     }
 }

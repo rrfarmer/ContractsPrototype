@@ -41,5 +41,10 @@ namespace Prototype.Data
         {
             return (_context.SaveChanges() >= 0);
         }
+
+        public void UpdateWarranty(OtherWarranty warranty)
+        {
+            // Nothing
+        }
     }
 }

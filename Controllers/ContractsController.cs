@@ -58,5 +58,23 @@ namespace Prototype.Controllers
 
             return CreatedAtRoute(nameof(GetContractById), new { Id = contractModel.Id }, contractReadDto);
         }
+
+        // PUT api/contracts/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateContract(int id, ContractUpdateDto contractUpdateDto)
+        {
+            var contractModelFromRepo = _repository.GetContractById(id);
+            if (contractModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(contractUpdateDto, contractModelFromRepo);
+            _repository.UpdateContract(contractModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

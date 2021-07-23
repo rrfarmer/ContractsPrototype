@@ -42,5 +42,10 @@ namespace Prototype.Data
         {
             return (_context.SaveChanges() >= 0);
         }
+
+        public void UpdateUnit(Unit unit)
+        {
+            // Nothing
+        }
     }
 }

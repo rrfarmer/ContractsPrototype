@@ -68,5 +68,23 @@ namespace Prototype.Controllers
             return CreatedAtRoute(nameof(GetUnitById), new { Id = unitReadDto.Id }, unitReadDto);
         }
 
+        // PUT api/units/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateUnit(int id, UnitUpdateDto unitUpdateDto)
+        {
+            var unitModelFromRepo = _repository.GetUnitById(id);
+            if (unitModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(unitUpdateDto, unitModelFromRepo);
+            _repository.UpdateUnit(unitModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 }

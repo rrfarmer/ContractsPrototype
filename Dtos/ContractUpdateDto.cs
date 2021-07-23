@@ -6,7 +6,7 @@ using Prototype.Models;
 
 namespace Prototype.Dtos
 {
-    public class ContractCreateDto
+    public class ContractUpdateDto
     {
         [Required]
         public int CustomerId { get; set; }

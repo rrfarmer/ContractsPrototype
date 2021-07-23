@@ -9,5 +9,6 @@ namespace Prototype.Data
         IEnumerable<MediaFilter> GetAllMediaFilters();
         MediaFilter GetMediaFilterById(int id);
         void CreateMediaFilter(MediaFilter filter);
+        void UpdateMediaFilter(MediaFilter filter);
     }
 }
