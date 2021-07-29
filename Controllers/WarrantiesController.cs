@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Prototype.Data;
 using Prototype.Dtos;
@@ -68,6 +69,33 @@ namespace Prototype.Controllers
             }
 
             _mapper.Map(warrantyUpdateDto, warrantyModelFromRepo);
+            _repository.UpdateWarranty(warrantyModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        // Patch api/warranties/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialCustomerUpdate(int id, JsonPatchDocument<WarrantyUpdateDto> patchDoc)
+        {
+            var warrantyModelFromRepo = _repository.GetWarrantyById(id); //TODO: refactor to own function
+            if (warrantyModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var warrantyToPatch = _mapper.Map<WarrantyUpdateDto>(warrantyModelFromRepo);
+            patchDoc.ApplyTo(warrantyToPatch, ModelState);
+
+            if (!TryValidateModel(warrantyToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(warrantyToPatch, warrantyModelFromRepo);
+
             _repository.UpdateWarranty(warrantyModelFromRepo);
 
             _repository.SaveChanges();
