@@ -75,7 +75,7 @@ namespace Prototype.Controllers
             return NoContent();
         }
 
-        // Patch api/commands/{id}
+        // Patch api/customers/{id}
         [HttpPatch("{id}")]
         public ActionResult PartialCustomerUpdate(int id, JsonPatchDocument<CustomerUpdateDto> patchDoc)
         {

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Prototype.Data;
 using Prototype.Dtos;
@@ -72,5 +73,33 @@ namespace Prototype.Controllers
 
             return NoContent();
         }
+
+        // Patch api/filters/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialCustomerUpdate(int id, JsonPatchDocument<MediaFilterUpdateDto> patchDoc)
+        {
+            var mediaFilterModelFromRepo = _repository.GetMediaFilterById(id); //TODO: refactor to own function
+            if (mediaFilterModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var mediaFilterToPatch = _mapper.Map<MediaFilterUpdateDto>(mediaFilterModelFromRepo);
+            patchDoc.ApplyTo(mediaFilterToPatch, ModelState);
+
+            if (!TryValidateModel(mediaFilterToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(mediaFilterToPatch, mediaFilterModelFromRepo);
+
+            _repository.UpdateMediaFilter(mediaFilterModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 }
