@@ -5,6 +5,7 @@ using Prototype.Data;
 using Prototype.Dtos;
 using Prototype.Models;
 using System.Linq;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Prototype.Controllers
 {
@@ -79,6 +80,33 @@ namespace Prototype.Controllers
             }
 
             _mapper.Map(unitUpdateDto, unitModelFromRepo);
+            _repository.UpdateUnit(unitModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        // Patch api/units/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialUnitUpdate(int id, JsonPatchDocument<UnitUpdateDto> patchDoc)
+        {
+            var unitModelFromRepo = _repository.GetUnitById(id); //TODO: refactor to own function
+            if (unitModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var unitToPatch = _mapper.Map<UnitUpdateDto>(unitModelFromRepo);
+            patchDoc.ApplyTo(unitToPatch, ModelState);
+
+            if (!TryValidateModel(unitToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(unitToPatch, unitModelFromRepo);
+
             _repository.UpdateUnit(unitModelFromRepo);
 
             _repository.SaveChanges();
