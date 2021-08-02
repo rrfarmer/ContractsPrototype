@@ -10,5 +10,6 @@ namespace Prototype.Data
         OtherWarranty GetWarrantyById(int id);
         void CreateWarranty(OtherWarranty warranty);
         void UpdateWarranty(OtherWarranty warranty);
+        void DeleteWarranty(OtherWarranty warranty);
     }
 }

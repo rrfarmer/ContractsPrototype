@@ -78,9 +78,9 @@ namespace Prototype.Controllers
             return NoContent();
         }
 
-        // Patch api/commands/{id}
+        // Patch api/contracts/{id}
         [HttpPatch("{id}")]
-        public ActionResult PartialCustomerUpdate(int id, JsonPatchDocument<ContractUpdateDto> patchDoc)
+        public ActionResult PartialContractUpdate(int id, JsonPatchDocument<ContractUpdateDto> patchDoc)
         {
             var contractModelFromRepo = _repository.GetContractById(id); //TODO: refactor to own function
             if (contractModelFromRepo == null)
@@ -100,6 +100,22 @@ namespace Prototype.Controllers
 
             _repository.UpdateContract(contractModelFromRepo);
 
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        // DELETE api/contracts/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteContract(int id)
+        {
+            var contractModelFromRepo = _repository.GetContractById(id); //TODO: refactor to own function
+            if (contractModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteContract(contractModelFromRepo);
             _repository.SaveChanges();
 
             return NoContent();

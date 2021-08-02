@@ -76,7 +76,7 @@ namespace Prototype.Controllers
 
         // Patch api/filters/{id}
         [HttpPatch("{id}")]
-        public ActionResult PartialCustomerUpdate(int id, JsonPatchDocument<MediaFilterUpdateDto> patchDoc)
+        public ActionResult PartialMediaFilterUpdate(int id, JsonPatchDocument<MediaFilterUpdateDto> patchDoc)
         {
             var mediaFilterModelFromRepo = _repository.GetMediaFilterById(id); //TODO: refactor to own function
             if (mediaFilterModelFromRepo == null)
@@ -101,5 +101,20 @@ namespace Prototype.Controllers
             return NoContent();
         }
 
+        // DELETE api/filters/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteMediaFilter(int id)
+        {
+            var mediaFilterModelFromRepo = _repository.GetMediaFilterById(id); //TODO: refactor to own function
+            if (mediaFilterModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteMediaFilter(mediaFilterModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

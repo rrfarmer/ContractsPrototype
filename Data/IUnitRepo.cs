@@ -10,5 +10,6 @@ namespace Prototype.Data
         Unit GetUnitById(int id);
         void CreateUnit(Unit unit);
         void UpdateUnit(Unit unit);
+        void DeleteUnit(Unit unit);
     }
 }

@@ -10,5 +10,6 @@ namespace Prototype.Data
         MediaFilter GetMediaFilterById(int id);
         void CreateMediaFilter(MediaFilter filter);
         void UpdateMediaFilter(MediaFilter filter);
+        void DeleteMediaFilter(MediaFilter filter);
     }
 }

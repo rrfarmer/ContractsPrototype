@@ -10,5 +10,6 @@ namespace Prototype.Data
         Contract GetContractById(int id);
         void CreateContract(Contract contract);
         void UpdateContract(Contract contract);
+        void DeleteContract(Contract contract);
     }
 }

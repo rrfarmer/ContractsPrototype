@@ -78,7 +78,7 @@ namespace Prototype.Controllers
 
         // Patch api/warranties/{id}
         [HttpPatch("{id}")]
-        public ActionResult PartialCustomerUpdate(int id, JsonPatchDocument<WarrantyUpdateDto> patchDoc)
+        public ActionResult PartialWarrantyUpdate(int id, JsonPatchDocument<WarrantyUpdateDto> patchDoc)
         {
             var warrantyModelFromRepo = _repository.GetWarrantyById(id); //TODO: refactor to own function
             if (warrantyModelFromRepo == null)
@@ -98,6 +98,22 @@ namespace Prototype.Controllers
 
             _repository.UpdateWarranty(warrantyModelFromRepo);
 
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        // DELETE api/warranties/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteWarranty(int id)
+        {
+            var warrantyModelFromRepo = _repository.GetWarrantyById(id); //TODO: refactor to own function
+            if (warrantyModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteWarranty(warrantyModelFromRepo);
             _repository.SaveChanges();
 
             return NoContent();

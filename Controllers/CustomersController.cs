@@ -101,5 +101,21 @@ namespace Prototype.Controllers
 
             return NoContent();
         }
+
+        // DELETE api/customer/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteCustomer(int id)
+        {
+            var customerModelFromRepo = _repository.GetCustomerById(id); //TODO: refactor to own function
+            if (customerModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteCustomer(customerModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

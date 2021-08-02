@@ -114,5 +114,20 @@ namespace Prototype.Controllers
             return NoContent();
         }
 
+        // DELETE api/unit/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteUnit(int id)
+        {
+            var unitModelFromRepo = _repository.GetUnitById(id); //TODO: refactor to own function
+            if (unitModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteUnit(unitModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

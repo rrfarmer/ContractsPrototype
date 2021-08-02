@@ -47,5 +47,15 @@ namespace Prototype.Data
         {
             // Nothing
         }
+
+        public void DeleteUnit(Unit unit)
+        {
+            if (unit == null)
+            {
+                throw new ArgumentNullException(nameof(unit));
+            }
+
+            _context.Units.Remove(unit);
+        }
     }
 }

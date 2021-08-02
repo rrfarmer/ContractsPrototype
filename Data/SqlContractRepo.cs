@@ -25,6 +25,16 @@ namespace Prototype.Data
             _context.Contracts.Add(contract);
         }
 
+        public void DeleteContract(Contract contract)
+        {
+            if (contract == null)
+            {
+                throw new ArgumentNullException(nameof(contract));
+            }
+
+            _context.Contracts.Remove(contract);
+        }
+
         public IEnumerable<Contract> GetAllContracts()
         {
             return _context.Contracts.ToList();

@@ -25,6 +25,16 @@ namespace Prototype.Data
             _context.OtherWarranties.Add(warranty);
         }
 
+        public void DeleteWarranty(OtherWarranty warranty)
+        {
+            if (warranty == null)
+            {
+                throw new ArgumentNullException(nameof(warranty));
+            }
+
+            _context.OtherWarranties.Remove(warranty);
+        }
+
         public IEnumerable<OtherWarranty> GetAllWarranties()
         {
             return _context.OtherWarranties.ToList();

@@ -18,6 +18,11 @@ namespace Prototype.Data
             throw new NotImplementedException();
         }
 
+        public void DeleteCustomer(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Customer> GetAllCustomers()
         {
             var customers = new List<Customer>

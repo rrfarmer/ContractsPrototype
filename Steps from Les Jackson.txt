@@ -129,3 +129,6 @@ See Code for example
 
 DELETE Section
 ===============
+Add a Delete to the interface
+Implement in SQL Repo
+Create Delete in Controller

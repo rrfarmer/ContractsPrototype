@@ -25,6 +25,16 @@ namespace Prototype.Data
             _context.MediaFilters.Add(filter);
         }
 
+        public void DeleteMediaFilter(MediaFilter filter)
+        {
+            if (filter == null)
+            {
+                throw new ArgumentNullException(nameof(filter));
+            }
+
+            _context.MediaFilters.Remove(filter);
+        }
+
         public IEnumerable<MediaFilter> GetAllMediaFilters()
         {
             return _context.MediaFilters.ToList();

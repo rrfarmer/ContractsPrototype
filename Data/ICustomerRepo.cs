@@ -10,5 +10,6 @@ namespace Prototype.Data
         Customer GetCustomerById(int id);
         void CreateCustomer(Customer customer);
         void UpdateCustomer(Customer customer);
+        void DeleteCustomer(Customer customer);
     }
 }
