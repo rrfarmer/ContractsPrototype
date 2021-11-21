@@ -7,8 +7,8 @@ namespace Prototype.Models
     {
         public int Id { get; set; }
 
-        // [Required]
-        // public int ContractId { get; set; }
+        [Required]
+        public int ContractId { get; set; }
 
         public DateTime Visit { get; set; }
     }

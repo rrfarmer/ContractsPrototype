@@ -19,6 +19,6 @@ namespace Prototype.Dtos
         [Required]
         public string Email { get; set; }
         public string Notes { get; set; }
-        public IList<Contract> Contracts { get; set; }
+        //public IList<Contract> Contracts { get; set; }
     }
 }
