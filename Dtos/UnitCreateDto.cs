@@ -7,7 +7,9 @@ namespace Prototype.Dtos
     {
         [Required]
         public int ContractId { get; set; }
+
+        [Required]
         public int MediaFilterId { get; set; }
-        public MediaFilter MediaFilter { get; set; } // Drop down list
+        //public MediaFilter MediaFilter { get; set; } // Drop down list
     }
 }

@@ -11,5 +11,6 @@ namespace Prototype.Models
         public int ContractId { get; set; }
 
         public DateTime Visit { get; set; }
+        public string Notes {get; set;}
     }
 }

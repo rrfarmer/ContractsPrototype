@@ -55,10 +55,10 @@ namespace Prototype.Controllers
         [HttpPost]
         public ActionResult<UnitReadDto> CreateUnit(UnitCreateDto unitCreateDto)
         {
-            if (unitCreateDto.MediaFilter == null)
-            {
-                unitCreateDto.MediaFilterId = 1; // Hardcode set to default "Unknown"
-            }
+            // if (unitCreateDto.MediaFilterId == null)
+            // {
+            //     unitCreateDto.MediaFilterId = 1; // Hardcode set to default "Unknown"
+            // }
 
             var unitModel = _mapper.Map<Unit>(unitCreateDto);
             _repository.CreateUnit(unitModel);
