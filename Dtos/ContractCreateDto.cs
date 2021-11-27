@@ -21,7 +21,7 @@ namespace Prototype.Dtos
         public string State { get; set; }
 
         [Required]
-        public int Zip { get; set; }
+        public string Zip { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }

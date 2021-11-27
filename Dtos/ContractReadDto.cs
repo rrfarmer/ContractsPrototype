@@ -12,7 +12,7 @@ namespace Prototype.Dtos
         public string Address { get; set; } // Could possible encapsulate this in an Address Object
         public string City { get; set; }
         public string State { get; set; }
-        public int Zip { get; set; }
+        public string Zip { get; set; }
         public DateTime StartDate { get; set; }
         public int BillingPeriodId { get; set; }
         public BillingPeriod BillingPeriod { get; set; } // Dropdown static list

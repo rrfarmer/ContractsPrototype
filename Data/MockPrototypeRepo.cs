@@ -39,7 +39,7 @@ namespace Prototype.Data
                         Address = "123 North Left Ave",
                         City = "Altgard",
                         State = "IO",
-                        Zip = 12345,
+                        Zip = "12345",
                         StartDate = new DateTime(2021, 1, 1),
                         BillingPeriodId = 0,
                         BillingPeriod = new BillingPeriod
@@ -108,7 +108,7 @@ namespace Prototype.Data
                         Address = "123 North Left Ave",
                         City = "Altgard",
                         State = "IO",
-                        Zip = 12345,
+                        Zip = "12345",
                         StartDate = new DateTime(2021, 1, 1),
                         BillingPeriodId = 0,
                         BillingPeriod = new BillingPeriod
@@ -177,7 +177,7 @@ namespace Prototype.Data
                         Address = "123 North Left Ave",
                         City = "Altgard",
                         State = "IO",
-                        Zip = 12345,
+                        Zip = "12345",
                         StartDate = new DateTime(2021, 1, 1),
                         BillingPeriodId = 0,
                         BillingPeriod = new BillingPeriod
@@ -253,7 +253,7 @@ namespace Prototype.Data
                         Address = "123 North Left Ave",
                         City = "Altgard",
                         State = "IO",
-                        Zip = 12345,
+                        Zip = "12345",
                         StartDate = new DateTime(2021, 1, 1),
                         BillingPeriodId = 0,
                         BillingPeriod = new BillingPeriod
