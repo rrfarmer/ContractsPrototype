@@ -33,6 +33,11 @@ namespace Prototype.Profiles
             CreateMap<MediaFilterCreateDto, MediaFilter>();
             CreateMap<MediaFilterUpdateDto, MediaFilter>();
             CreateMap<MediaFilter, MediaFilterUpdateDto>();
+
+            CreateMap<ServiceVisit, ServiceVisitReadDto>();
+            CreateMap<ServiceVisitCreateDto, ServiceVisit>();
+            CreateMap<ServiceVisitUpdateDto, ServiceVisit>();
+            CreateMap<ServiceVisit, ServiceVisitUpdateDto>();
         }
     }
 }

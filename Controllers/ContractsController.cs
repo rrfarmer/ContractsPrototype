@@ -33,7 +33,7 @@ namespace Prototype.Controllers
 
         // GET api/contracts/{id}
         [HttpGet("{id}", Name = "GetContractById")]
-        public ActionResult<CustomerReadDto> GetContractById(int id)
+        public ActionResult<ContractReadDto> GetContractById(int id)
         {
             var contractItem = _repository.GetContractById(id);
 

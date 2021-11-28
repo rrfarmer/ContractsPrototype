@@ -17,6 +17,6 @@ namespace Prototype.Data
         public DbSet<BillingPeriod> Billingperiods { get; set; }
         public DbSet<MediaFilter> MediaFilters { get; set; }
         public DbSet<OtherWarranty> OtherWarranties { get; set; }
-
+        public DbSet<ServiceVisit> ServiceVisit { get; set;}
     }
 }
