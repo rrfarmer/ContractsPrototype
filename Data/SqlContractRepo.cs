@@ -37,7 +37,12 @@ namespace Prototype.Data
 
         public IEnumerable<Contract> GetAllContracts()
         {
-            return _context.Contracts.ToList();
+            return _context.Contracts
+                        .Include(c => c.BillingPeriod)
+                        .Include(c => c.OtherWarranty)
+                        .Include(c => c.Units)
+                        .Include(c => c.ServiceVisits)
+                        .ToList();
         }
 
         public Contract GetContractById(int id)
