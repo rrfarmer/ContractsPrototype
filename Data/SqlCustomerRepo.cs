@@ -40,6 +40,19 @@ namespace Prototype.Data
             return _context.Customers.ToList();
         }
 
+        public IEnumerable<Customer> SearchCustomers(string term)
+        {
+            var customers = GetAllCustomers();
+
+            if (!string.IsNullOrEmpty(term))
+            {
+                customers = customers.Where(e => e.FirstName.Contains(term) || e.LastName.Contains(term));
+            }
+
+            return customers;
+
+        }
+
         public Customer GetCustomerById(int id)
         {
             var customer = _context.Customers.First(p => p.Id == id);

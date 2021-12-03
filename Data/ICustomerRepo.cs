@@ -7,6 +7,7 @@ namespace Prototype.Data
     {
         bool SaveChanges();
         IEnumerable<Customer> GetAllCustomers();
+        IEnumerable<Customer> SearchCustomers(string term);
         Customer GetCustomerById(int id);
         void CreateCustomer(Customer customer);
         void UpdateCustomer(Customer customer);

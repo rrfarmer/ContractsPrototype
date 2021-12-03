@@ -44,11 +44,25 @@ namespace Prototype.Controllers
             return NotFound();
         }
 
+        // GET api/customers/search/{term}
+        [HttpGet("search/{term}", Name = "SearchCustomer")]
+        public ActionResult<CustomerReadDto> SearchCustomer(string term)
+        {
+            var customerItems = _repository.SearchCustomers(term);
+
+            if (customerItems != null)
+            {
+                return Ok(_mapper.Map<IEnumerable<CustomerReadDto>>(customerItems));
+            }
+
+            return NotFound();
+        }
+
         // POST api/customers/
         [HttpPost]
         public ActionResult<CustomerReadDto> CreateCustomer(CustomerCreateDto customerCreateDto)
         {
-            var customerModel = _mapper.Map<Customer>(customerCreateDto); // Probably need to verify incoming Customer data
+            var customerModel = _mapper.Map<Customer>(customerCreateDto); // TODO: Probably need to verify incoming Customer data
             _repository.CreateCustomer(customerModel);
             _repository.SaveChanges();
 
@@ -61,7 +75,7 @@ namespace Prototype.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateCustomer(int id, CustomerUpdateDto customerUpdateDto)
         {
-            var customerModelFromRepo = _repository.GetCustomerById(id); //TODO: refactor to own function
+            var customerModelFromRepo = _repository.GetCustomerById(id); // TODO: refactor to own function
             if (customerModelFromRepo == null)
             {
                 return NotFound();
@@ -79,7 +93,7 @@ namespace Prototype.Controllers
         [HttpPatch("{id}")]
         public ActionResult PartialCustomerUpdate(int id, JsonPatchDocument<CustomerUpdateDto> patchDoc)
         {
-            var customerModelFromRepo = _repository.GetCustomerById(id); //TODO: refactor to own function
+            var customerModelFromRepo = _repository.GetCustomerById(id); // TODO: refactor to own function
             if (customerModelFromRepo == null)
             {
                 return NotFound();
@@ -106,7 +120,7 @@ namespace Prototype.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteCustomer(int id)
         {
-            var customerModelFromRepo = _repository.GetCustomerById(id); //TODO: refactor to own function
+            var customerModelFromRepo = _repository.GetCustomerById(id); // TODO: refactor to own function
             if (customerModelFromRepo == null)
             {
                 return NotFound();

@@ -317,6 +317,11 @@ namespace Prototype.Data
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Customer> SearchCustomers(string term)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateCustomer(Customer customer)
         {
             throw new NotImplementedException();
