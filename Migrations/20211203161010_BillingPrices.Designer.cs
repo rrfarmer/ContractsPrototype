@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Prototype.Data;
 
 namespace Prototype.Migrations
 {
     [DbContext(typeof(PrototypeContext))]
-    partial class PrototypeContextModelSnapshot : ModelSnapshot
+    [Migration("20211203161010_BillingPrices")]
+    partial class BillingPrices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,9 +30,6 @@ namespace Prototype.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("additionalUnitPrice")
-                        .HasColumnType("float");
 
                     b.Property<double>("price")
                         .HasColumnType("float");
