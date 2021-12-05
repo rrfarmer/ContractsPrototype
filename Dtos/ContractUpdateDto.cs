@@ -28,7 +28,7 @@ namespace Prototype.Dtos
 
         [Required]
         public int BillingPeriodId { get; set; }
-        public BillingPeriod BillingPeriod { get; set; } // Dropdown static list
+        //public BillingPeriod BillingPeriod { get; set; } // Dropdown static list
 
         [Required]
         public bool isActive { get; set; }
@@ -37,10 +37,10 @@ namespace Prototype.Dtos
         public int OtherWarrantyId { get; set; }
 
 
-        public OtherWarranty OtherWarranty { get; set; } // Dropdown static list
+        //public OtherWarranty OtherWarranty { get; set; } // Dropdown static list
 
-        public IList<Unit> Units { get; set; }
+        //public IList<Unit> Units { get; set; }
 
-        public IList<ServiceVisit> ServiceVisits { get; set; }
+        //public IList<ServiceVisit> ServiceVisits { get; set; }
     }
 }
