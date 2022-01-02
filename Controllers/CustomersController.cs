@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Prototype.Data;
@@ -23,6 +24,7 @@ namespace Prototype.Controllers
         }
         // GET api/customers/
         [HttpGet]
+        [Authorize]
         public ActionResult<IEnumerable<CustomerReadDto>> GetAllCustomers()
         {
             var customerItems = _repository.GetAllCustomers();

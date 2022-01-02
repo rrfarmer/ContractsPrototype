@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Prototype.Data;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Prototype
 {
@@ -52,6 +53,18 @@ namespace Prototype
             services.AddScoped<IServiceVisitRepo, SqlServiceVisitRepo>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            // 1. Add Authentication Services
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = "https://dev-sqoewyka.us.auth0.com/";
+                options.Audience = "https://contractprototype.com/api/";
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +81,7 @@ namespace Prototype
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
