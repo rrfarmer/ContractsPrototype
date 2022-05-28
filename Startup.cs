@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Prototype.Data;
 using Newtonsoft.Json.Serialization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+//using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Prototype
 {
@@ -54,16 +54,16 @@ namespace Prototype
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            // 1. Add Authentication Services
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.Authority = "https://dev-sqoewyka.us.auth0.com/";
-                options.Audience = "https://contractprototype.com/api/";
-            });
+            //1. Add Authentication Services
+        //     services.AddAuthentication(options =>
+        //     {
+        //         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        //         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        //     }).AddJwtBearer(options =>
+        //     {
+        //         options.Authority = "https://dev-sqoewyka.us.auth0.com/";
+        //         options.Audience = "https://contractprototype.com/api/";
+        //     });
 
         }
 
